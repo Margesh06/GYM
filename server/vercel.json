@@ -8,14 +8,9 @@
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/api/(.*)",
         "dest": "server/index.js"
       }
-    ],
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
+    ]
   }
   

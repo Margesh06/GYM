@@ -1,18 +1,18 @@
-// src/pages/PaymentPage.jsx
+
 
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuthContext } from '../context/AuthContext'; // Adjust the import path as needed
+import { useAuthContext } from '../context/AuthContext'; 
 
 const PaymentPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { user } = useAuthContext(); // Use context to get the logged-in user
+  const { user } = useAuthContext(); 
   const [paymentStatus, setPaymentStatus] = useState('');
   const { planType, amount } = state || {};
 
-  // Handle the payment process
+
   const handlePayment = async () => {
     try {
       const response = await axios.post(
@@ -20,7 +20,7 @@ const PaymentPage = () => {
         { planType, amount },
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`, // Use token from context
+            Authorization: `Bearer ${user?.token}`, 
           },
         }
       );
@@ -36,7 +36,6 @@ const PaymentPage = () => {
   };
 
   useEffect(() => {
-    // You can fetch any additional data here if needed for PaymentPage
   }, []);
 
   return (

@@ -7,18 +7,14 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if the email belongs to an admin
     const admin = await Admin.findOne({ where: { email } });
     if (admin && admin.password === password) {
-      // Admin login
       const token = generateToken(admin.id);
       return res.json({ token, role: 'admin' });
     }
 
-    // Check if the email belongs to a regular user
     const user = await User.findOne({ where: { email } });
     if (user && user.password === password) {
-      // User login
       const token = generateToken(user.id);
       return res.json({ token, role: 'user' });
     }
@@ -29,7 +25,7 @@ const login = async (req, res) => {
   }
 };
 
-// Register functionality for both User and Admin (can be separated if needed)
+// Register functionality for both User and Admin
 const register = async (req, res) => {
   const { name, email, password, isAdmin } = req.body;
 
@@ -59,19 +55,17 @@ const register = async (req, res) => {
 };
 
 const getUserDetails = async (req, res) => {
-  const userId = req.user.id; // Extracted from auth middleware
+  const userId = req.user.id; 
   
   try {
-    // Fetch all details of the user
     const user = await User.findByPk(userId, {
-      attributes: ['id', 'name', 'email'], // Include all necessary attributes
+      attributes: ['id', 'name', 'email'], 
     });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Send the user's details in the response
     res.json({
       id: user.id,
       name: user.name,

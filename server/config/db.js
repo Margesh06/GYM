@@ -4,8 +4,8 @@ const { Sequelize } = require('sequelize');
 
 // Setup the database connection using Sequelize
 const sequelize = new Sequelize(process.env.DB_URI, {
-  dialect: 'postgres', // Specify the database dialect, e.g., 'postgres', 'mysql', 'sqlite', etc.
-  logging: false, // Optional: Disable logging to avoid console clutter
+  dialect: 'postgres', 
+  logging: false, 
 });
 
 const testConnection = async () => {

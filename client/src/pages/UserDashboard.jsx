@@ -15,10 +15,9 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        // Fetch user details (name)
         const response = await axios.get('http://localhost:5000/api/students/details', {
           headers: {
-            Authorization: `Bearer ${user?.token}`, // Use token from context
+            Authorization: `Bearer ${user?.token}`, 
           },
         });
         setUserName(response.data.name || 'User');
@@ -31,7 +30,7 @@ const UserDashboard = () => {
       try {
         const response = await axios.get('http://localhost:5000/api/payments/payments', {
           headers: {
-            Authorization: `Bearer ${user?.token}`, // Use token from context
+            Authorization: `Bearer ${user?.token}`,
           },
         });
 
@@ -39,15 +38,13 @@ const UserDashboard = () => {
         setUserPayments(payments);
 
         if (payments.length > 0) {
-          const lastPayment = payments[0];  // Assuming latest payment is at the start
+          const lastPayment = payments[0];  
           const lastPaymentDate = new Date(lastPayment.createdAt);
           const currentDate = new Date();
 
-          // Calculate the difference in days
           const diffTime = Math.abs(currentDate - lastPaymentDate);
           const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-          // If more than 30 days since last payment, user can subscribe
           setCanSubscribe(diffDays > 30);
           setSubscriptionInfo({
             planType: lastPayment.planType,
@@ -55,9 +52,8 @@ const UserDashboard = () => {
             remainingDays: 30 - diffDays, // Calculate how many days are remaining
           });
         } else {
-          // New user (no payments), allow subscription immediately
           setCanSubscribe(true);
-          setSubscriptionInfo(null); // No previous subscription info available
+          setSubscriptionInfo(null); 
         }
       } catch (error) {
         console.error('Error fetching user payments:', error);
@@ -85,13 +81,10 @@ const UserDashboard = () => {
 
   return (
     <div>
-      {/* Menu Bar */}
       <Navbar onLogout={handleLogout} />
 
-      {/* User Dashboard Content */}
-      <h2>Welcome, {userName}!</h2> {/* Display the user's name */}
+      <h2>Welcome, {userName}!</h2> 
 
-      {/* Subscription Info */}
       {subscriptionInfo && (
         <div>
           <p>Last subscription: {subscriptionInfo.planType} (INR {subscriptionInfo.dueAmount})</p>
@@ -99,7 +92,6 @@ const UserDashboard = () => {
         </div>
       )}
 
-      {/* Gym Subscription Cards */}
       <div style={styles.cardContainer}>
         <div style={styles.card}>
           <h3>Morning Batch</h3>

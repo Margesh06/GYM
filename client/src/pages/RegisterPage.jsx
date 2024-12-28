@@ -17,7 +17,6 @@ const RegisterPage = () => {
         password,
       });
       alert('Registration Successful');
-      // Redirect to login page after successful registration
       navigate('/login');
     } catch (err) {
       console.error(err);
@@ -26,7 +25,7 @@ const RegisterPage = () => {
   };
 
   const handleLoginRedirect = () => {
-    navigate('/login'); // Redirect to login page
+    navigate('/login'); 
   };
 
   return (
@@ -72,7 +71,6 @@ const RegisterPage = () => {
   );
 };
 
-// Styling Object
 const styles = {
   container: {
     display: 'flex',

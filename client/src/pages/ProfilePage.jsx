@@ -11,17 +11,16 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (!user) {
-      // Redirect to login page if no user is found in the context
+      
       navigate('/login');
       return;
     }
 
-    // Fetch user details from the backend
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/students/details', {
           headers: {
-            Authorization: `Bearer ${user.token}`, // Assuming you're passing the token in the header
+            Authorization: `Bearer ${user.token}`, 
           },
         });
         setUserDetails(response.data);
@@ -42,7 +41,7 @@ const ProfilePage = () => {
   };
 
   if (!userDetails) {
-    return <div>Loading...</div>; // Show loading state while fetching user data
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -51,7 +50,6 @@ const ProfilePage = () => {
     <Navbar onLogout={handleLogout} />
       <h2>Profile</h2>
       
-      {/* User Information Display */}
       <div style={styles.infoSection}>
         <h3>User Information</h3>
         <p><strong>Name:</strong> {userDetails.name || 'Not Available'}</p>
@@ -61,7 +59,6 @@ const ProfilePage = () => {
   );
 };
 
-// Inline styles for the Profile Page
 const styles = {
   profileContainer: {
     padding: '20px',

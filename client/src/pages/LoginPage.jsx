@@ -22,7 +22,7 @@ const LoginPage = () => {
   };
 
   const handleRegisterRedirect = () => {
-    navigate('/register'); // Redirect to the register page
+    navigate('/register'); 
   };
 
   return (
@@ -60,7 +60,6 @@ const LoginPage = () => {
   );
 };
 
-// Styling Object
 const styles = {
   container: {
     display: 'flex',

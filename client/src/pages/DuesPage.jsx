@@ -12,23 +12,22 @@ const DuesPage = () => {
   const [dueAmount, setDueAmount] = useState(0);
   const [daysLeft, setDaysLeft] = useState(0);
 
-  // Fetch payments for the logged-in user
+
   const fetchUserPayments = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/payments/payments', {
         headers: {
-          Authorization: `Bearer ${user?.token}`, // Use token from context
+          Authorization: `Bearer ${user?.token}`, 
         },
       });
 
       const payments = response.data.payments || [];
-      setUserPayments(payments); // Ensure payments is always an array
+      setUserPayments(payments); 
 
       if (payments.length > 0) {
-        // Extract the remainingDays and dues information directly from the backend response
         setDues(response.data.dues || false);
-        setDueAmount(response.data.payments[0]?.amount || 0); // Assuming the due amount is the same as the last payment amount
-        setDaysLeft(response.data.remainingDays || 0); // Use the remaining days from the backend response
+        setDueAmount(response.data.payments[0]?.amount || 0); 
+        setDaysLeft(response.data.remainingDays || 0); 
       } else {
         setDues(false);
       }
@@ -56,7 +55,6 @@ const DuesPage = () => {
     <Navbar onLogout={handleLogout} />
       <h3 style={styles.header}>Your Payments</h3>
 
-      {/* Dues Section */}
       {dues ? (
         <div style={styles.duesContainer}>
           <p style={styles.duesText}>You have dues of INR {dueAmount}. Please make a payment.</p>
@@ -66,7 +64,6 @@ const DuesPage = () => {
         <p style={styles.noDuesText}>No dues. You are up to date with your payments.</p>
       )}
 
-      {/* Payments List */}
       <h4 style={styles.subHeader}>Recent Payments</h4>
       <ul style={styles.paymentList}>
         {userPayments.length === 0 ? (

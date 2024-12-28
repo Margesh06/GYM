@@ -4,20 +4,19 @@ import { useAuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
 const AdminDashboard = () => {
-  const { logout, user } = useAuthContext(); // Get the logout function and user from context
-  const [usersWithDues, setUsersWithDues] = useState([]); // State to store dues info
+  const { logout, user } = useAuthContext(); 
+  const [usersWithDues, setUsersWithDues] = useState([]); 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // Remove token or user session
-    navigate('/login'); // Redirect to login page
+    logout(); 
+    navigate('/login'); 
   };
 
-  // Fetch users' payment data on component mount
   useEffect(() => {
     const fetchUsersWithDues = async () => {
       try {
-        // Use the token from context
+
         const token = user?.token;
         if (!token) {
           console.error('No token found. Please log in again.');
@@ -50,10 +49,8 @@ const AdminDashboard = () => {
       <h2 style={styles.header}>Admin Dashboard</h2>
       <p style={styles.subHeader}>Welcome, Admin! Here you can manage everything.</p>
 
-      {/* Logout Button */}
       <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>
 
-      {/* Users Dues Information */}
       <h3 style={styles.tableHeader}>Users Payment Dues</h3>
       {usersWithDues.length > 0 ? (
         <table style={styles.table}>
@@ -79,8 +76,6 @@ const AdminDashboard = () => {
       ) : (
         <p>No dues found or unable to fetch data.</p>
       )}
-
-      {/* Additional Admin Features */}
     </div>
   );
 };

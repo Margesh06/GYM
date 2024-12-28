@@ -3,7 +3,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // Authentication middleware to verify JWT token
 const authMiddleware = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1]; // Expect token to be in format "Bearer <token>"
+  const token = req.headers.authorization?.split(' ')[1]; 
 
   if (!token) {
     return res.status(403).json({ message: 'Token is required' });
@@ -11,7 +11,7 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = { id: decoded.userId };  // Attach user information to the request object
+    req.user = { id: decoded.userId };  
     next();
   } catch (err) {
     console.error(err);

@@ -13,7 +13,7 @@ const Navbar = ({ onLogout }) => {
   };
 
   const navigateToHome = () => {
-    navigate('/dashboard'); // Assuming the dashboard route is '/dashboard'
+    navigate('/dashboard'); 
   };
 
   return (

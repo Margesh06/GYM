@@ -91,3 +91,7 @@ This project is a Gym Class Registration System built with React for the fronten
 
 ---
 
+
+## Database Schema
+![image](https://github.com/user-attachments/assets/bd42577e-2559-47f0-816e-3de3985f2631)
+

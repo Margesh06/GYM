@@ -91,6 +91,11 @@ This project is a Gym Class Registration System built with React for the fronten
 
 ---
 
+### Key Additions:
+- **Admin Panel Access**: Now includes information about viewing all the outstanding dues in the admin panel.
+- **Email**: admin@gmail.com
+- **Password**:admin
+
 
 ## Database Schema
 ![image](https://github.com/user-attachments/assets/bd42577e-2559-47f0-816e-3de3985f2631)

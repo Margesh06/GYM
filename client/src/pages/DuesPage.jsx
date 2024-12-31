@@ -83,8 +83,8 @@ const DuesPage = () => {
 const styles = {
   container: {
     padding: '20px',
-    maxWidth: '600px',
-    margin: '0 auto',
+   // maxWidth: '600px',
+   // margin: '0 auto',
     backgroundColor: '#f4f4f9',
     borderRadius: '8px',
     boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',

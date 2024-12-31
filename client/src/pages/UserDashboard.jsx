@@ -101,7 +101,9 @@ const UserDashboard = () => {
             onClick={() => canSubscribe && navigateToPayment('Morning Batch', 7000)}
             disabled={!canSubscribe}
           >
-            {canSubscribe ? 'Subscribe' : 'Wait for 30 Days'}
+            {canSubscribe
+      ? 'Subscribe'
+      : `Wait ${subscriptionInfo?.remainingDays || 30} Days`}
           </button>
         </div>
 
@@ -113,7 +115,9 @@ const UserDashboard = () => {
             onClick={() => canSubscribe && navigateToPayment('Afternoon Batch', 7000)}
             disabled={!canSubscribe}
           >
-            {canSubscribe ? 'Subscribe' : 'Wait for 30 Days'}
+            {canSubscribe
+      ? 'Subscribe'
+      : `Wait ${subscriptionInfo?.remainingDays || 30} Days`}
           </button>
         </div>
 
@@ -125,7 +129,9 @@ const UserDashboard = () => {
             onClick={() => canSubscribe && navigateToPayment('Evening Batch', 7000)}
             disabled={!canSubscribe}
           >
-            {canSubscribe ? 'Subscribe' : 'Wait for 30 Days'}
+            {canSubscribe
+      ? 'Subscribe'
+      : `Wait ${subscriptionInfo?.remainingDays || 30} Days`}
           </button>
         </div>
       </div>

@@ -62,8 +62,8 @@ const ProfilePage = () => {
 const styles = {
   profileContainer: {
     padding: '20px',
-    maxWidth: '800px',
-    margin: '0 auto',
+    //maxWidth: '800px',
+   // margin: '0 auto',
     backgroundColor: '#f4f4f4',
     borderRadius: '8px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
